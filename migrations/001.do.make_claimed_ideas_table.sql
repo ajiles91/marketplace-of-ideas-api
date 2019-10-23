@@ -6,7 +6,7 @@ CREATE TABLE ideas (
   ideaSummary TEXT NOT NULL,
   authorName TEXT NOT NULL,
   email TEXT NOT NULL,
-  claimed boolean not null default  1,
-  submitted boolean not null default 0
+  claimed boolean not null,
+  submitted boolean not null
 );
 

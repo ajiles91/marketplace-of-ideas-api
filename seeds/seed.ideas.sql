@@ -6,8 +6,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 1',
     'name1@email.com',
-    1,
-    0
+    TRUE,
+    FALSE
   ),
 
   (
@@ -16,8 +16,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 2',
     'name2@email.com',
-    0,
-    0
+    FALSE,
+    FALSE
   ),
   (
     3, 
@@ -25,8 +25,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium', 
     'Name 3',
     'name3@email.com',
-    1,
-    0    
+    TRUE,
+    FALSE    
   ),
   (
     4, 
@@ -34,8 +34,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium', 
     'Name 4',
     'name4@email.com',
-    0,
-    0
+    FALSE,
+    FALSE
   ),
 
   (
@@ -44,8 +44,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 5',
     'name5@email.com',
-    1,
-    0
+    TRUE,
+    FALSE
     ),
 
   (
@@ -54,8 +54,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',  
     'Name 6',
     'name6@email.com',
-    0,
-    0
+    FALSE,
+    FALSE
   ),
 
   (
@@ -64,8 +64,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium', 
     'Name 7',
     'name7@email.com',
-    1,
-    0
+    TRUE,
+    FALSE
   ),
 
   (
@@ -74,8 +74,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 8', 
     'name8@email.com',
-    0,
-    0
+    FALSE,
+    FALSE
   ),
 
   (
@@ -84,8 +84,8 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 9',
     'name9@email.com',
-    1,
-    0
+    TRUE,
+    FALSE
   ),
   (
     10, 
@@ -93,6 +93,6 @@ INSERT INTO ideas
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 10',
     'name10@email.com',
-    0,
-    0
+    FALSE,
+    FALSE
   )
