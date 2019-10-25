@@ -1,32 +1,17 @@
-const express = require('express');
-require('dotenv').config()
-const app = express();
+const app = require('./app')
+const knex = require('knex')
 const { PORT, DB_URL } = require('./config')
 
-const knex = require('knex')
-
-app.get('/api/*', (req, res) => {
-  res.json({ok: true});
-});
-
-const knexInstance = knex({
-  client: 'pg',
-  connection: process.env.DB_URL,
+app.use((req, res) => {
+  res.send('Hello, world!')
 })
 
-const qry = knexInstance
-  .select('id', 'ideaName', 'ideaSummary', 'categemailory')
-  .from('id')
-  .where({ claimed: TRUE })
-  // .first()
-  .toQuery()
-console.log(qry)
+const db = knex({
+  client: 'pg',
+  connection: DB_URL,
+})
 
-
-console.log('knex and driver installed correctly')
-
-
-
+app.set('db', db)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
