@@ -48,8 +48,9 @@ ideasRouter
 .route('/create-idea')
 .post(jsonParser, (req, res, next) => {
     
-    const {  ideaName, ideaSummary, authorName, email, claimed, submitted } = req.body;
-    const newIdea = { ideaName, ideaSummary, email, claimed, submitted }
+    
+    const {  ideaname, ideasummary, authorname, email, claimed, submitted } = req.body;
+    const newIdea = { ideaname, ideasummary, authorname,  email, claimed, submitted }
     for (const [key, value] of Object.entries(newIdea)) {
         if (value == null) {
             return res.status(400).json({
