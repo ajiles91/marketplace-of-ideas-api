@@ -1,10 +1,8 @@
 const express = require('express');
-const knex = require('knex');
-
 const IdeasService = require('./ideas-service')
 
 const ideasRouter = express.Router()
-const jsonParser = express.json() //for post endpoint
+const jsonParser = express.json() 
 
   
 
@@ -17,7 +15,7 @@ ideasRouter
             res.json(ideas)
         })
     .catch(next)
-  })
+})
 
 ideasRouter
 .route('/idea/:id')
@@ -28,17 +26,36 @@ ideasRouter
         res.json(idea)
     })
     .catch(next)
-  })
+})
 
-.patch((req, res) =>{
+.patch((req, res, next) => {
+    const knexInstance = req.app.get('db')
+    IdeasService.updateClaimedVariable(knexInstance, req.params.id, newClaimedVariable)
 
 })
 
 ideasRouter
 .route('/create-idea')
 .post(jsonParser, (req, res, next) => {
-    res.status(201).send('something')
+
+    const { ideaName, ideaSummary, authorName, email, claimed, submitted } = req.body;
+    const newIdea = { ideaName, ideaSummary, authorName, email, claimed, submitted }
+    for (const [key, value] of Object.entries(newIdea)) {
+        if (value == null) {
+            return res.status(400).json({
+                error: { message: `Missing '${key}' in submission` }
+            })
+        }
+    }
+    
+    IdeasService.addNewIdea(
+        req.app.get('db'), newIdea
+    )
+    .then(idea => {
+        res.status(201).json(idea)
+    })
 })
+
 
 
 module.exports = ideasRouter
