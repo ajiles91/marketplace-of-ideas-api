@@ -34,23 +34,18 @@ ideasRouter
     const newClaimedVariable = {claimed};
     const knexInstance = req.app.get('db')
     IdeasService.updateClaimedVariable(knexInstance, req.params.id, newClaimedVariable)
-    
     .then(idea => {
         console.log({idea})
         res.json(idea)
     })
-        
-    
-
 })
 
 ideasRouter
 .route('/create-idea')
 .post(jsonParser, (req, res, next) => {
-    
-    
     const { ideaname, ideasummary, authorname, email, claimed, submitted } = req.body;
     const newIdea = { ideaname, ideasummary, authorname,  email, claimed, submitted }
+    
     for (const [key, value] of Object.entries(newIdea)) {
         if (value == null) {
             return res.status(400).json({
@@ -63,7 +58,8 @@ ideasRouter
         req.app.get('db'), newIdea
     )
     .then(idea => {
-        res.status(201).location(`/idea/${id}`).json(idea)
+        res.status(201)
+        .json(idea)
     })
     .catch(next)
 })
