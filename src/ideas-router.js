@@ -49,7 +49,7 @@ ideasRouter
 .post(jsonParser, (req, res, next) => {
     
     
-    const {  ideaname, ideasummary, authorname, email, claimed, submitted } = req.body;
+    const { ideaname, ideasummary, authorname, email, claimed, submitted } = req.body;
     const newIdea = { ideaname, ideasummary, authorname,  email, claimed, submitted }
     for (const [key, value] of Object.entries(newIdea)) {
         if (value == null) {
