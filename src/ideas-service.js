@@ -16,10 +16,12 @@ const IdeasService = {
     },
 
     updateClaimedVariable(knex, id, newClaimedVariable){
+        console.log(id)
         return knex('ideas')
-        .where({ id })
+        .where('id', id)
         .update(newClaimedVariable)
+    
     },
-
+    
 }
 module.exports = IdeasService
