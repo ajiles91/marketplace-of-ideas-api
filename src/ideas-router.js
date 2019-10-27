@@ -7,7 +7,7 @@ const jsonParser = express.json()
   
 
 ideasRouter
- .route('/')
+ .route('/api')
   .get((req, res, next) => {
     const knexInstance = req.app.get('db')
     IdeasService.getAllIdeas(knexInstance)
@@ -18,7 +18,7 @@ ideasRouter
 })
 
 ideasRouter
-.route('/idea/:id')
+.route('/api/idea/:id')
 .get((req, res, next) => {
     const knexInstance = req.app.get('db')
     IdeasService.getIdeaById(knexInstance, req.params.id)
@@ -41,7 +41,7 @@ ideasRouter
 })
 
 ideasRouter
-.route('/idea')
+.route('/api/idea')
 .post(jsonParser, (req, res, next) => {
     const { ideaname, ideasummary, authorname, email, claimed, submitted } = req.body;
     const newIdea = { ideaname, ideasummary, authorname,  email, claimed, submitted }
