@@ -41,7 +41,7 @@ ideasRouter
 })
 
 ideasRouter
-.route('/create-idea')
+.route('/idea')
 .post(jsonParser, (req, res, next) => {
     const { ideaname, ideasummary, authorname, email, claimed, submitted } = req.body;
     const newIdea = { ideaname, ideasummary, authorname,  email, claimed, submitted }

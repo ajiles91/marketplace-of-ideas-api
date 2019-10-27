@@ -10,7 +10,6 @@ const IdeasService = {
     addNewIdea(knex, newIdea){
         console.log(newIdea)
         return knex
-    
         .insert(newIdea)
         .into('ideas')
         .returning('*')
