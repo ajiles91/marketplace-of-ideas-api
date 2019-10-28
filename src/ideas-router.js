@@ -4,8 +4,6 @@ const IdeasService = require('./ideas-service')
 const ideasRouter = express.Router()
 const jsonParser = express.json() 
 
-  
-
 ideasRouter
  .route('/api')
   .get((req, res, next) => {
@@ -29,7 +27,7 @@ ideasRouter
 })
 
 .patch(jsonParser, (req, res, next) => {
-    console.log(req.body.claimed)
+    
     const { claimed } = req.body;
     const newClaimedVariable = {claimed};
     const knexInstance = req.app.get('db')
@@ -64,8 +62,4 @@ ideasRouter
     .catch(next)
 })
 
-
-
 module.exports = ideasRouter
-
-

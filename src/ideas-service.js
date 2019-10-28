@@ -8,19 +8,19 @@ const IdeasService = {
     },
 
     addNewIdea(knex, newIdea){
-        console.log(newIdea)
+       
         return knex
         .insert(newIdea)
         .into('ideas')
         .returning('*')
         .then(
-            console.log('successful'),
+            
             rows => rows[0]
         )
     },
 
     updateClaimedVariable(knex, id, newClaimedVariable){
-        console.log(id)
+        
         return knex('ideas')
         .where('id', id)
         .update(newClaimedVariable)
