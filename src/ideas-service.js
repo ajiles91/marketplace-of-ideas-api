@@ -8,13 +8,11 @@ const IdeasService = {
     },
 
     addNewIdea(knex, newIdea){
-       
         return knex
         .insert(newIdea)
         .into('ideas')
         .returning('*')
         .then(
-            
             rows => rows[0]
         )
     },
