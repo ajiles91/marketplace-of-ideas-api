@@ -23,7 +23,7 @@ app.use(ideasRouter)
 app.use(errorHandler)
 
 app.get('/', (req, res) => {
-   res.send('hello world')
+   res.send('hello from app.js')
 })
 
 module.exports = app
