@@ -22,8 +22,8 @@ app.use(cors())
 app.use(ideasRouter)
 app.use(errorHandler)
 
-app.get('/', (req, res) => {
-   res.send('hello from app.js')
+app.get('/api', (req, res) => {
+  res.send('hello from app.js')
 })
 
 module.exports = app

@@ -14,3 +14,21 @@
 {"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
 {"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
 {"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"could not load pg_hba.conf","level":"error"}
+{"message":"could not load pg_hba.conf","level":"error"}
+{"message":"could not load pg_hba.conf","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
+{"message":"no pg_hba.conf entry for host \"76.104.109.46\", user \"rkealdqjzazfnv\", database \"d2p0rad3ghnhlb\", SSL off","level":"error"}
