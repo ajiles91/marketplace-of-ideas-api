@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan')
-const validateBearerToken = require('./validate-bearer-token')
+
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
