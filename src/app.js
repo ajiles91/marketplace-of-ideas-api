@@ -26,4 +26,7 @@ app.get('/api', (req, res) => {
   res.send('hello from app.js')
 })
 
+app.get('/', (req, res) => {
+  res.send('Hello, world!')
+})
 module.exports = app
