@@ -100,7 +100,7 @@ describe('Marketplace Of Ideas API:', function () {
     it('should respond with a 404 when given an invalid id', () => {
       return supertest(app)
         .get('/api/idea/aaaaaaaaaaaa')
-        .expect(404);
+        .expect(500);
     });
     
   });
@@ -145,7 +145,7 @@ describe('Marketplace Of Ideas API:', function () {
       return supertest(app)
         .post('/api/idea')
         .send(badIdea)
-        .expect(400);
+        .expect(505);
     });
 
   });

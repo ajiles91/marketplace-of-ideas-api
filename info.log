@@ -73,3 +73,6 @@
 {"message":"select * from \"ideas\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"aaaaaaaaaaaa\"","level":"error"}
 {"message":"select * from \"ideas\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"aaaaaaaaaaaa\"","level":"error"}
 {"message":"select * from \"ideas\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"aaaaaaaaaaaa\"","level":"error"}
+{"message":"select * from \"ideas\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"aaaaaaaaaaaa\"","level":"error"}
+{"message":"select * from \"ideas\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"aaaaaaaaaaaa\"","level":"error"}
+{"message":"select * from \"ideas\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"aaaaaaaaaaaa\"","level":"error"}
