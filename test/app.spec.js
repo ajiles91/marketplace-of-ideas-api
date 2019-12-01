@@ -68,7 +68,7 @@ describe('Marketplace Of Ideas API:', function () {
   });
 
   
-  describe.only('GET /api/idea/:id', () => {
+  describe('GET /api/idea/:id', () => {
 
     beforeEach('insert some ideas', () => {
       return db('ideas').insert(ideas);
