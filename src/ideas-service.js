@@ -18,7 +18,6 @@ const IdeasService = {
     },
 
     updateClaimedVariable(knex, id, newClaimedVariable){
-        
         return knex('ideas')
         .where('id', id)
         .update(newClaimedVariable)
