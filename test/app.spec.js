@@ -106,11 +106,11 @@ describe('Marketplace Of Ideas API:', function () {
   });
 
   
-  describe.only('POST /api/idea', function () {
+  describe('POST /api/idea', function () {
 
     it('should create and return a new todo when provided valid data', function () {
       const newIdea = { 
-        'id': 5,
+        'id': 1,
         "ideaname": 'some name5',
         "ideasummary": 'some summary5',
         "authorname": 'some name5',
@@ -133,24 +133,23 @@ describe('Marketplace Of Ideas API:', function () {
           expect(res.body.email).to.equal(newIdea.email);
           expect(res.body.claimed).to.equal(newIdea.claimed);
           expect(res.body.submitted).to.equal(newIdea.submitted);
-          expect(res.headers.location).to.equal(`/api/idea/${res.body.id}`)
         });
     });
 
-    it('should respond with 500 status when given bad data', function () {
+    it('should respond with 400 status when given bad data', function () {
       const badIdea = {
         foobar: 'bad idea'
       };
       return supertest(app)
         .post('/api/idea')
         .send(badIdea)
-        .expect(500);
+        .expect(400);
     });
 
   });
 
   
-  describe('PATCH /api/idea/:id', () => {
+  describe.only('PATCH /api/idea/:id', () => {
 
     beforeEach('insert some ideas', () => {
       return db('ideas').insert(ideas);
@@ -162,7 +161,7 @@ describe('Marketplace Of Ideas API:', function () {
       };
       
       let doc;
-      return db('marketplace-of-ideas-test')
+      return db('ideas')
         .first()
         .then(_doc => {
           doc = _doc
@@ -184,7 +183,7 @@ describe('Marketplace Of Ideas API:', function () {
         foobar: 'broken item'
       };
       
-      return db('makretplace-of-ideas-test')
+      return db('ideas')
         .first()
         .then(doc => {
           return supertest(app)
@@ -192,22 +191,6 @@ describe('Marketplace Of Ideas API:', function () {
             .send(badIdea)
             .expect(400);
         })
-    });
-
-    it('should respond with a 404 for an invalid id', () => {
-      const idea = { 
-        "id": 5,
-        "ideaName": 'some name5',
-        "ideaSummary": 'some summary5',
-        "authorName": 'some name5',
-        "email":'name5@email.com',
-        "claimed":false,
-        "submitted": true,
-     }
-      return supertest(app)
-        .patch('/v1/todos/aaaaaaaaaaaaaaaaaaaaaaaa')
-        .send(idea)
-        .expect(404);
     });
 
   });

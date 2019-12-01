@@ -45,7 +45,7 @@ ideasRouter
     const newIdea = { ideaname, ideasummary, authorname,  email, claimed, submitted }
     
     for (const [key, value] of Object.entries(newIdea)) {
-        if (value === null) {
+        if (value == null) {
             return res.status(400).json({
                 error: { message: `Missing '${key}' in submission` }
             })
