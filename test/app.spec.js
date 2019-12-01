@@ -14,17 +14,17 @@ describe('Marketplace Of Ideas API:', function () {
   let db;
   let ideas = [
     { "id": 1,
-    "ideaName": 'some name1',
-    "ideaSummary": 'some summary1',
-    "authorName": 'some name',
+    "ideaname": 'some name1',
+    "ideasummary": 'some summary1',
+    "authorname": 'some name',
     "email":'name@email.com',
     "claimed":false,
     "submitted": true,
    },
     { "id": 2,
-    "ideaName": 'some name2',
-    "ideaSummary": 'some summary2',
-    "authorName": 'some name2',
+    "ideaname": 'some name2',
+    "ideasummary": 'some summary2',
+    "authorname": 'some name2',
     "email":'name2@email.com',
     "claimed":false,
     "submitted": true,
@@ -45,10 +45,10 @@ describe('Marketplace Of Ideas API:', function () {
 
   after('disconnect from the database', () => db.destroy()); 
 
-  describe('GET /api', () => {
+  describe.only('GET /api', () => {
 
     beforeEach('insert some ideas', () => {
-      return db('marketplace_of_ideas').insert(ideas);
+      return db('ideas').insert(ideas);
     })
 
     it('should respond to GET `/api` with an array of ideas and status 200', function () {
@@ -60,7 +60,7 @@ describe('Marketplace Of Ideas API:', function () {
           expect(res.body).to.have.length(ideas.length);
           res.body.forEach((idea) => {
             expect(idea).to.be.a('object');
-            expect(idea).to.include.keys('id', 'ideaName', 'ideaSummary', 'authorName', 'email', 'claimed', 'submitted');
+            expect(idea).to.include.keys('id', 'ideaname', 'ideasummary', 'authorname', 'email', 'claimed', 'submitted');
           });
         });
     });
@@ -111,9 +111,9 @@ describe('Marketplace Of Ideas API:', function () {
     it('should create and return a new todo when provided valid data', function () {
       const newIdea = { 
         "id": 5,
-        "ideaName": 'some name5',
-        "ideaSummary": 'some summary5',
-        "authorName": 'some name5',
+        "ideaname": 'some name5',
+        "ideasummary": 'some summary5',
+        "authorname": 'some name5',
         "email":'name5@email.com',
         "claimed":false,
         "submitted": true,
@@ -125,7 +125,7 @@ describe('Marketplace Of Ideas API:', function () {
         .expect(201)
         .expect(res => {
           expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('id', 'ideaName', 'ideaSummary', 'authorName', 'email', 'claimed', 'submitted');
+          expect(res.body).to.include.keys('id', 'ideaname', 'ideasummary', 'authorname', 'email', 'claimed', 'submitted');
           expect(res.body.id).to.equal(doc.id);
           expect(res.body.ideaName).to.equal(doc.ideaName);
           expect(res.body.ideaSummary).to.equal(doc.ideaSummary);
@@ -174,7 +174,7 @@ describe('Marketplace Of Ideas API:', function () {
         })
         .then(res => {
           expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('id', 'ideaName', 'ideaSummary', 'authorName', 'email', 'claimed', 'submitted');
+          expect(res.body).to.include.keys('id', 'ideaname', 'ideasummary', 'authorname', 'email', 'claimed', 'submitted');
           expect(res.body.ideaName).to.equal(item.ideaName);
           expect(res.body.claimed).to.be.false;
         });
