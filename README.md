@@ -13,7 +13,7 @@ Node.js, Express.js, PostgreSQL, SQL, Knex
 - Install the dependencies for the project
 - Ensure your PostgreSQL server is running
 - Create a User for this exercise (or you may use the same User from your previous interview)
-- Create a database for the exercise with your user as the owner
+- Create a database for the project with your user as the owner
 - Rename the `example.env` file to `.env` and update the following fields with your database credentials:
   ```
    MIGRATION_DB_NAME=
@@ -22,8 +22,8 @@ Node.js, Express.js, PostgreSQL, SQL, Knex
    DB_URL="postgresql://USERNAME@localhost/DATABASE_NAME"
   ```
 - Run the command `npm run migrate -- 1` to create the database tables
-- run the command `npm t`
-- You should see output from 10 integration tests, some will be failing.
+- Run the command `npm t` to run tests
+
 
 # API Documentation
 This is a backend database that manages the ideas that are submitted, claimed and released by users.
