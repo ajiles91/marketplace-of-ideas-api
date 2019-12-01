@@ -88,9 +88,9 @@ describe('Marketplace Of Ideas API:', function () {
           expect(res.body).to.be.an('object');
           expect(res.body).to.include.keys('id', 'ideaname', 'ideasummary', 'authorname', 'email', 'claimed', 'submitted');
           expect(res.body.id).to.equal(doc.id);
-          expect(res.body.ideaName).to.equal(doc.ideaname);
-          expect(res.body.ideaSummary).to.equal(doc.ideasummary);
-          expect(res.body.authorName).to.equal(doc.authorname);
+          expect(res.body.ideaname).to.equal(doc.ideaname);
+          expect(res.body.ideasummary).to.equal(doc.ideasummary);
+          expect(res.body.authorname).to.equal(doc.authorname);
           expect(res.body.email).to.equal(doc.email);
           expect(res.body.claimed).to.equal(doc.claimed);
           expect(res.body.submitted).to.equal(doc.submitted);
