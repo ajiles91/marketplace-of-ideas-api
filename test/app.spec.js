@@ -139,7 +139,7 @@ describe('Marketplace Of Ideas API:', function () {
 
     it('should respond with 500 status when given bad data', function () {
       const badIdea = {
-        foobar: 'broken item'
+        foobar: 'bad idea'
       };
       return supertest(app)
         .post('/api/idea')
@@ -153,7 +153,7 @@ describe('Marketplace Of Ideas API:', function () {
   describe('PATCH /api/idea/:id', () => {
 
     beforeEach('insert some ideas', () => {
-      return db('marketplace-of-ideas-test').insert(ideas);
+      return db('ideas').insert(ideas);
     })
 
     it('should update idea when given valid data and an id', function () {
@@ -211,8 +211,5 @@ describe('Marketplace Of Ideas API:', function () {
     });
 
   });
-
-  
-    
 
 });
