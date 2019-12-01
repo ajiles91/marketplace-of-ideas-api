@@ -27,14 +27,14 @@ ideasRouter
 })
 
 .patch(jsonParser, (req, res, next) => {
-    
     const { claimed } = req.body;
     const newClaimedVariable = {claimed};
     const knexInstance = req.app.get('db')
     IdeasService.updateClaimedVariable(knexInstance, req.params.id, newClaimedVariable)
     .then(idea => {
-        console.log({idea})
         res.json(idea)
+    }).catch(err => {
+        res.status(400).send({error: 'Unable to update data'});
     })
 })
 

@@ -149,7 +149,7 @@ describe('Marketplace Of Ideas API:', function () {
   });
 
   
-  describe.only('PATCH /api/idea/:id', () => {
+  describe('PATCH /api/idea/:id', () => {
 
     beforeEach('insert some ideas', () => {
       return db('ideas').insert(ideas);
@@ -157,7 +157,7 @@ describe('Marketplace Of Ideas API:', function () {
 
     it('should update idea when given valid data and an id', function () {
       const idea = {
-        'claimed': 'true'
+        claimed: true
       };
       
       let doc;
@@ -171,10 +171,7 @@ describe('Marketplace Of Ideas API:', function () {
             .expect(200);
         })
         .then(res => {
-          expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('id', 'ideaname', 'ideasummary', 'authorname', 'email', 'claimed', 'submitted');
-          expect(res.body.ideaName).to.equal(item.ideaName);
-          expect(res.body.claimed).to.be.false;
+          expect(res.body).to.equal(1);
         });
     });
 
@@ -189,8 +186,11 @@ describe('Marketplace Of Ideas API:', function () {
           return supertest(app)
             .patch(`/api/idea/${doc.id}`)
             .send(badIdea)
-            .expect(400);
-        })
+            .expect(400);            
+        })  
+        .then(res => {
+          expect(res.body.error).to.equal('Unable to update data');
+        })         
     });
 
   });
