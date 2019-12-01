@@ -45,7 +45,7 @@ describe('Marketplace Of Ideas API:', function () {
 
   after('disconnect from the database', () => db.destroy()); 
 
-  describe.only('GET /api', () => {
+  describe('GET /api', () => {
 
     beforeEach('insert some ideas', () => {
       return db('ideas').insert(ideas);
@@ -68,10 +68,10 @@ describe('Marketplace Of Ideas API:', function () {
   });
 
   
-  describe('GET /api/idea/:id', () => {
+  describe.only('GET /api/idea/:id', () => {
 
     beforeEach('insert some ideas', () => {
-      return db('marketplace_of_ideas').insert(ideas);
+      return db('ideas').insert(ideas);
     })
 
     it('should return correct idea when given an id', () => {
@@ -86,11 +86,11 @@ describe('Marketplace Of Ideas API:', function () {
         })
         .then(res => {
           expect(res.body).to.be.an('object');
-          expect(res.body).to.include.keys('id', 'ideaName', 'ideaSummary', 'authorName', 'email', 'claimed', 'submitted');
+          expect(res.body).to.include.keys('id', 'ideaname', 'ideasummary', 'authorname', 'email', 'claimed', 'submitted');
           expect(res.body.id).to.equal(doc.id);
-          expect(res.body.ideaName).to.equal(doc.ideaName);
-          expect(res.body.ideaSummary).to.equal(doc.ideaSummary);
-          expect(res.body.authorName).to.equal(doc.authorName);
+          expect(res.body.ideaName).to.equal(doc.ideaname);
+          expect(res.body.ideaSummary).to.equal(doc.ideasummary);
+          expect(res.body.authorName).to.equal(doc.authorname);
           expect(res.body.email).to.equal(doc.email);
           expect(res.body.claimed).to.equal(doc.claimed);
           expect(res.body.submitted).to.equal(doc.submitted);
