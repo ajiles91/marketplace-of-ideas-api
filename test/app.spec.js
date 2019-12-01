@@ -97,7 +97,7 @@ describe('Marketplace Of Ideas API:', function () {
         });
     });
 
-    it('should respond with a 404 when given an invalid id', () => {
+    it('should respond with a 500 when given an invalid id', () => {
       return supertest(app)
         .get('/api/idea/aaaaaaaaaaaa')
         .expect(500);
@@ -106,11 +106,11 @@ describe('Marketplace Of Ideas API:', function () {
   });
 
   
-  describe('POST /api/idea', function () {
+  describe.only('POST /api/idea', function () {
 
     it('should create and return a new todo when provided valid data', function () {
       const newIdea = { 
-        "id": 5,
+        'id': 5,
         "ideaname": 'some name5',
         "ideasummary": 'some summary5',
         "authorname": 'some name5',
@@ -126,26 +126,25 @@ describe('Marketplace Of Ideas API:', function () {
         .expect(res => {
           expect(res.body).to.be.a('object');
           expect(res.body).to.include.keys('id', 'ideaname', 'ideasummary', 'authorname', 'email', 'claimed', 'submitted');
-          expect(res.body.id).to.equal(doc.id);
-          expect(res.body.ideaName).to.equal(doc.ideaName);
-          expect(res.body.ideaSummary).to.equal(doc.ideaSummary);
-          expect(res.body.authorName).to.equal(doc.authorName);
-          expect(res.body.email).to.equal(doc.email);
-          expect(res.body.claimed).to.equal(doc.claimed);
-          expect(res.body.submitted).to.equal(doc.submitted);
-          // expect(res.body.completed).to.be.false;
+          expect(res.body.id).to.equal(newIdea.id);
+          expect(res.body.ideaname).to.equal(newIdea.ideaname);
+          expect(res.body.ideasummary).to.equal(newIdea.ideasummary);
+          expect(res.body.authorname).to.equal(newIdea.authorname);
+          expect(res.body.email).to.equal(newIdea.email);
+          expect(res.body.claimed).to.equal(newIdea.claimed);
+          expect(res.body.submitted).to.equal(newIdea.submitted);
           expect(res.headers.location).to.equal(`/api/idea/${res.body.id}`)
         });
     });
 
-    it('should respond with 400 status when given bad data', function () {
+    it('should respond with 500 status when given bad data', function () {
       const badIdea = {
         foobar: 'broken item'
       };
       return supertest(app)
         .post('/api/idea')
         .send(badIdea)
-        .expect(505);
+        .expect(500);
     });
 
   });
