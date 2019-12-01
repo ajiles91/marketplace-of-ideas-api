@@ -1,5 +1,6 @@
 const knex = require('knex')
 const app = require('../src/app')
+require('dotenv').config();
 
 describe('App', () => {
   it('GET / responds with 200 containing "Hello, world!"', () => {
@@ -33,22 +34,22 @@ describe('Marketplace Of Ideas API:', function () {
   before('make knex instance', () => {  
     db = knex ({
       client: 'pg',
-      connection: process.env.DB_URL,
+      connection: process.env.TEST_DATABASE_URL,
     })
     app.set('db', db)
   });
   
-  // before('cleanup', () => db.raw('TRUNCATE TABLE ideas RESTART IDENTITY;'));
+  before('cleanup', () => db.raw('TRUNCATE TABLE ideas RESTART IDENTITY;'));
 
-  // afterEach('cleanup', () => db.raw('TRUNCATE TABLE ideas RESTART IDENTITY;')); 
+  afterEach('cleanup', () => db.raw('TRUNCATE TABLE ideas RESTART IDENTITY;')); 
 
-  // after('disconnect from the database', () => db.destroy()); 
+  after('disconnect from the database', () => db.destroy()); 
 
   describe('GET /api', () => {
 
-    // beforeEach('insert some ideas', () => {
-    //   return db('marketplace_of_ideas').insert(ideas);
-    // })
+    beforeEach('insert some ideas', () => {
+      return db('marketplace_of_ideas').insert(ideas);
+    })
 
     it('should respond to GET `/api` with an array of ideas and status 200', function () {
       return supertest(app)
@@ -109,11 +110,11 @@ describe('Marketplace Of Ideas API:', function () {
 
     it('should create and return a new todo when provided valid data', function () {
       const newIdea = { 
-        "id": 1,
-        "ideaName": 'some name1',
-        "ideaSummary": 'some summary1',
-        "authorName": 'some name',
-        "email":'name@email.com',
+        "id": 5,
+        "ideaName": 'some name5',
+        "ideaSummary": 'some summary5',
+        "authorName": 'some name5',
+        "email":'name5@email.com',
         "claimed":false,
         "submitted": true,
      }
@@ -150,57 +151,63 @@ describe('Marketplace Of Ideas API:', function () {
   });
 
   
-  describe('PATCH /v1/todos/:id', () => {
+  describe('PATCH /api/idea/:id', () => {
 
-    beforeEach('insert some todos', () => {
-      return db('marketplace_of_ideas').insert(ideas);
+    beforeEach('insert some ideas', () => {
+      return db('marketplace-of-ideas-test').insert(ideas);
     })
 
-    it('should update item when given valid data and an id', function () {
-      const item = {
-        'title': 'Buy New Dishes'
+    it('should update idea when given valid data and an id', function () {
+      const idea = {
+        'claimed': 'true'
       };
       
       let doc;
-      return db('todo')
+      return db('marketplace-of-ideas-test')
         .first()
         .then(_doc => {
           doc = _doc
           return supertest(app)
-            .patch(`/v1/todos/${doc.id}`)
-            .send(item)
+            .patch(`/api/idea/${doc.id}`)
+            .send(idea)
             .expect(200);
         })
         .then(res => {
           expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('id', 'title', 'completed');
-          expect(res.body.title).to.equal(item.title);
-          expect(res.body.completed).to.be.false;
+          expect(res.body).to.include.keys('id', 'ideaName', 'ideaSummary', 'authorName', 'email', 'claimed', 'submitted');
+          expect(res.body.ideaName).to.equal(item.ideaName);
+          expect(res.body.claimed).to.be.false;
         });
     });
 
     it('should respond with 400 status when given bad data', function () {
-      const badItem = {
+      const badIdea = {
         foobar: 'broken item'
       };
       
-      return db('todo')
+      return db('makretplace-of-ideas-test')
         .first()
         .then(doc => {
           return supertest(app)
-            .patch(`/v1/todos/${doc.id}`)
-            .send(badItem)
+            .patch(`/api/idea/${doc.id}`)
+            .send(badIdea)
             .expect(400);
         })
     });
 
     it('should respond with a 404 for an invalid id', () => {
-      const item = {
-        'title': 'Buy New Dishes'
-      };
+      const idea = { 
+        "id": 5,
+        "ideaName": 'some name5',
+        "ideaSummary": 'some summary5',
+        "authorName": 'some name5',
+        "email":'name5@email.com',
+        "claimed":false,
+        "submitted": true,
+     }
       return supertest(app)
         .patch('/v1/todos/aaaaaaaaaaaaaaaaaaaaaaaa')
-        .send(item)
+        .send(idea)
         .expect(404);
     });
 
