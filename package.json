@@ -11,8 +11,7 @@
     "deploy": "git push heroku master",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "NODE_ENV=test postgrator --config postgrator-config.js",
-    "migrate:production": "env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
-    "build": "npm run build"
+    "migrate:production": "env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate"
   },
   "keywords": [],
   "engines": {
