@@ -12,7 +12,7 @@
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "NODE_ENV=test postgrator --config postgrator-config.js",
     "migrate:production": "env SSL=true POSTGRES_URL=$(heroku config:get POSTGRES_URL) npm run migrate",
-    "build": "npm build --output public"
+    "build": "npm run build --output public"
   },
   "keywords": [],
   "engines": {
