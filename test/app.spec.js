@@ -31,19 +31,19 @@ describe('Marketplace Of Ideas API:', function () {
     }
   ]
 
-  before('make knex instance', () => {  
+  before('make knex instance', () => {
     db = knex ({
       client: 'pg',
-      connection: process.env.TEST_DATABASE_URL,
+      connection: process.env.TEST_POSTGRES_URL,
     })
     app.set('db', db)
   });
-  
+
   before('cleanup', () => db.raw('TRUNCATE TABLE ideas RESTART IDENTITY;'));
 
-  afterEach('cleanup', () => db.raw('TRUNCATE TABLE ideas RESTART IDENTITY;')); 
+  afterEach('cleanup', () => db.raw('TRUNCATE TABLE ideas RESTART IDENTITY;'));
 
-  after('disconnect from the database', () => db.destroy()); 
+  after('disconnect from the database', () => db.destroy());
 
   describe('GET /api', () => {
 
@@ -67,7 +67,7 @@ describe('Marketplace Of Ideas API:', function () {
 
   });
 
-  
+
   describe('GET /api/idea/:id', () => {
 
     beforeEach('insert some ideas', () => {
@@ -102,14 +102,14 @@ describe('Marketplace Of Ideas API:', function () {
         .get('/api/idea/aaaaaaaaaaaa')
         .expect(500);
     });
-    
+
   });
 
-  
+
   describe('POST /api/idea', function () {
 
     it('should create and return a new todo when provided valid data', function () {
-      const newIdea = { 
+      const newIdea = {
         'id': 1,
         "ideaname": 'some name5',
         "ideasummary": 'some summary5',
@@ -148,7 +148,7 @@ describe('Marketplace Of Ideas API:', function () {
 
   });
 
-  
+
   describe('PATCH /api/idea/:id', () => {
 
     beforeEach('insert some ideas', () => {
@@ -159,7 +159,7 @@ describe('Marketplace Of Ideas API:', function () {
       const idea = {
         claimed: true
       };
-      
+
       let doc;
       return db('ideas')
         .first()
@@ -179,18 +179,18 @@ describe('Marketplace Of Ideas API:', function () {
       const badIdea = {
         foobar: 'broken item'
       };
-      
+
       return db('ideas')
         .first()
         .then(doc => {
           return supertest(app)
             .patch(`/api/idea/${doc.id}`)
             .send(badIdea)
-            .expect(400);            
-        })  
+            .expect(400);
+        })
         .then(res => {
           expect(res.body.error).to.equal('Unable to update data');
-        })         
+        })
     });
 
   });
