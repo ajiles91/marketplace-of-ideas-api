@@ -11,9 +11,6 @@
     "migrate:test": "NODE_ENV=test postgrator --config postgrator-config.js",
     "migrate:production": "env SSL=true POSTGRES_URL=$(heroku config:get POSTGRES_URL) npm run migrate",
     "build": "rimraf dist && tsc",
-    "clean": "rm -rf node_modules",
-    "reinstall": "npm run clean && npm install",
-    "rebuild": "npm run clean && npm install && npm run build",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist"
   },
@@ -31,23 +28,6 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "chokidar": "^3.6.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "formidable": "^3.5.1",
-    "helmet": "^7.1.0",
-    "is-glob": "^4.0.3",
-    "knex": "^3.0.1",
-    "latest-version": "^9.0.0",
-    "morgan": "^1.10.0",
-    "npm": "^10.8.1",
-    "pg": "^8.12.0",
-    "postgrator": "^7.2.0",
-    "superagent": "^9.0.2",
-    "winston": "^3.13.0",
-    "xss": "^1.0.15"
-  },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.0",
@@ -63,6 +43,23 @@
     "rimraf": "^6.0.1",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "winston": "^3.13.0",
+    "xss": "^1.0.15",
+    "pg": "^8.12.0",
+    "postgrator": "^7.2.0",
+    "chokidar": "^3.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.1",
+    "helmet": "^7.1.0",
+    "is-glob": "^4.0.3",
+    "knex": "^3.0.1",
+    "latest-version": "^9.0.0",
+    "morgan": "^1.10.0",
+    "npm": "^10.8.1"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }
