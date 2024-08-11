@@ -4,32 +4,37 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --requires text/setup.js",
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.ts",
     "predeploy": "npm audit",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "NODE_ENV=test postgrator --config postgrator-config.js",
     "migrate:production": "env SSL=true POSTGRES_URL=$(heroku config:get POSTGRES_URL) npm run migrate",
-    "build": "vercel build",
+    "build": "rimraf dist && tsc",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
-    "rebuild": "npm run clean && npm install && npm run build"
+    "rebuild": "npm run clean && npm install && npm run build",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "engines": {
-    "node": "^18.17.0 || >=20.5.0",
-    "npm": "10.7.0",
-    "vercel": "34.2.8",
-    "postgrator":"^7.2.0"
+    "node": "^18.17.0 || >=20.12.2",
+    "npm": "^10.5.0",
+    "vercel": "^34.2.8",
+    "postgrator": "^7.2.0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chokidar": "^3.6.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.3",
-    "express": ">=4.19.2",
+    "dotenv": "^16.4.5",
     "formidable": "^3.5.1",
     "helmet": "^7.1.0",
     "is-glob": "^4.0.3",
@@ -44,11 +49,20 @@
     "xss": "^1.0.15"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.21",
+    "@types/helmet": "^4.0.0",
+    "@types/node": "^22.2.0",
     "chai": "^5.1.0",
-    "express": ">=4.19.2",
+    "express": "^4.19.2",
     "mocha": "^10.5.1",
-    "nodemon": "^3.1.3",
+    "nodemon": "^3.1.4",
     "postgrator-cli": "^8.0.0",
-    "supertest": "^7.0.0"
+    "pre-commit": "^1.2.2",
+    "rimraf": "^6.0.1",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
