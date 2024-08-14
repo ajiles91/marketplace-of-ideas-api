@@ -1,14 +1,14 @@
-const app = require('./app')
-const knex = require('knex')
-const { PORT, POSTGRES_URL } = require('./config')
+// const app = require('./app')
+// const knex = require('knex')
+// const { PORT, POSTGRES_URL } = require('./config')
 
-const db = knex({
-  client: 'pg',
-  connection: POSTGRES_URL,
-})
+// const db = knex({
+//   client: 'pg',
+//   connection: POSTGRES_URL,
+// })
 
-app.set('db', db)
+// app.set('db', db)
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
-module.exports = {app};
+// module.exports = {app};
