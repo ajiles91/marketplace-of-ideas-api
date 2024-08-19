@@ -6,7 +6,6 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "serve": "node dist/index.js",
-    "predeploy": "npm audit",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "NODE_ENV=test postgrator --config postgrator-config.js",
     "migrate:production": "env SSL=true POSTGRES_URL=$(heroku config:get POSTGRES_URL) npm run migrate",
@@ -49,11 +48,12 @@
     "rimraf": "^6.0.1",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4",
     "winston": "^3.13.0",
     "xss": "^1.0.15"
   },
   "dependencies": {
+    "@vercel/postgres": "^0.9.0",
+    "typescript": "^5.5.4",
     "express": "^4.19.2"
   }
 }
