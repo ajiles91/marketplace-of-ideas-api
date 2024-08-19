@@ -12,8 +12,7 @@
     "migrate:production": "env SSL=true POSTGRES_URL=$(heroku config:get POSTGRES_URL) npm run migrate",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
-    "tcs": "tsc"
+    "add-build": "git add dist"
   },
   "pre-commit": [
     "ts.check",
@@ -55,7 +54,6 @@
     "xss": "^1.0.15"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "tsc": "^2.0.4"
+    "express": "^4.19.2"
   }
 }

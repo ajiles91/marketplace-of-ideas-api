@@ -1,33 +1,16 @@
-require('dotenv').config()
-const morgan = require('morgan')
-const cors = require('cors')
-const helmet = require('helmet')
-// const { NODE_ENV } = require('./config')
-const ideasRouter = require('./ideas-router')
-const errorHandler = require('./error-handler')
-import express, { Request, Response } from 'express'
+import express, { Request, Response } from 'express';
+import ideaRoutes from './routes/ideas-router';
 
+const app = express();
+const port = process.env.PORT || 3000;
 
-const app = express()
-const port = process.env.PORT || 8080
+app.use(express.json()); // Enable JSON parsing in the request body
+app.use('/ideas', ideaRoutes); // Add this line to mount the Task API routes
 
-// const morganOption = (NODE_ENV === 'production')
-//   ? 'tiny'
-//   : 'common';
-
-// app.use(morgan(morganOption))
-app.use(helmet())
-app.use(cors())
-
-app.use(ideasRouter)
-app.use(errorHandler)
-
-
-app.get('/ping', (_req: Request, res: Response) => {
-  return res.send('pong 🏓')
-})
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello, TypeScript Express!');
+});
 
 app.listen(port, () => {
-  return console.log(`Server is listening on ${port}`)
-})
-module.exports = app
+  console.log(`Server running at http://localhost:${port}`);
+});
