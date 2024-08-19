@@ -11,11 +11,11 @@ import express, { Request, Response } from 'express'
 const app = express()
 const port = process.env.PORT || 8080
 
-const morganOption = (NODE_ENV === 'production')
-  ? 'tiny'
-  : 'common';
+// const morganOption = (NODE_ENV === 'production')
+//   ? 'tiny'
+//   : 'common';
 
-app.use(morgan(morganOption))
+// app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 

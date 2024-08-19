@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
+    "serve": "node dist/index.js",
     "predeploy": "npm audit",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "NODE_ENV=test postgrator --config postgrator-config.js",
     "migrate:production": "env SSL=true POSTGRES_URL=$(heroku config:get POSTGRES_URL) npm run migrate",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist"
+    "add-build": "git add dist",
+    "tcs": "tsc"
   },
   "pre-commit": [
     "ts.check",
@@ -54,6 +55,7 @@
     "xss": "^1.0.15"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "tsc": "^2.0.4"
   }
 }
