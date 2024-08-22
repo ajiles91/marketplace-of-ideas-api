@@ -1,21 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const body = require("express-validator"); //ecma script
+const validationResult = require("express-validator");
 const router = (0, express_1.Router)();
 let ideas = [];
-// const ideaValidationRules = [
-//   body('ideaname').notEmpty().withMessage('Idea Name is required'),
-//   body('ideasummary').notEmpty().withMessage('Summary is required'),
-//   body('authorname').isBoolean().withMessage('Author name is required'),
-//   body('email').isBoolean().withMessage('Email is required'),
-//   body('claimed').isBoolean().withMessage('Claimed must be a boolean'),
-//   body('submitted').isBoolean().withMessage('Submitted must be a boolean'),
-// ];
-router.post('/', (req, res) => {
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   return res.status(400).json({ errors: errors.array() });
-    // }
+const ideaValidationRules = [
+    body.body('ideaname').notEmpty().withMessage('Idea Name is required'), // body.body required b/c body without referencing itself is read as a variable
+    body.body('ideasummary').notEmpty().withMessage('Summary is required'),
+    body.body('authorname').isBoolean().withMessage('Author name is required'),
+    body.body('email').notEmpty().withMessage('Email is required'),
+    body.body('claimed').isBoolean().withMessage('Claimed must be a boolean'),
+    body.body('submitted').isBoolean().withMessage('Submitted must be a boolean'),
+];
+router.post('/', ideaValidationRules, (req, res) => {
+    const errors = validationResult.validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const idea = {
         id: ideas.length + 1,
         ideaname: req.body.ideaname,
@@ -40,14 +42,14 @@ router.get('/:id', (req, res) => {
         res.json(idea);
     }
 });
-router.put('/:id', (req, res) => {
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   return res.status(400).json({ errors: errors.array() });
-    // }
+router.put('/:id', ideaValidationRules, (req, res) => {
+    const errors = validationResult.validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const idea = ideas.find((i) => i.id === parseInt(req.params.id));
     if (!idea) {
-        res.status(404).send('idea not found');
+        res.status(404).send('Idea not found');
     }
     else {
         idea.ideaname = req.body.ideaname || idea.ideaname;

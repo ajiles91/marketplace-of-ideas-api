@@ -1,9 +1,9 @@
 INSERT INTO ideas
   (id, ideaName, ideaSummary, authorName, email, claimed, submitted)
-  VALUES 
-  (1, 
-    'build an ecommerce website', 
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
+  VALUES
+  (1,
+    'build an ecommerce website',
+    'Sed ut perspiciatis nude ornis isle notus error sit voluptatem accusantium',
     'Name 1',
     'name1@email.com',
     true,
@@ -13,25 +13,25 @@ INSERT INTO ideas
   (
     2,
     'develop a singles matching app',
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
+    'Sed ut perspiciatis undef mobis istle nates error sit voluptatem accusantium',
     'Name 2',
     'name2@email.com',
     false,
     false
   ),
   (
-    3, 
+    3,
     'come up with an algorithm to calculate something',
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium', 
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 3',
     'name3@email.com',
     true,
-    false    
+    false
   ),
   (
-    4, 
+    4,
     'build a database of stuff',
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium', 
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 4',
     'name4@email.com',
     false,
@@ -51,7 +51,7 @@ INSERT INTO ideas
   (
     6,
     'put my portfolio on line',
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',  
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 6',
     'name6@email.com',
     false,
@@ -61,7 +61,7 @@ INSERT INTO ideas
   (
     7,
     'set up a gofundme account',
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium', 
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 7',
     'name7@email.com',
     true,
@@ -72,7 +72,7 @@ INSERT INTO ideas
     8,
     'create a chess game',
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
-    'Name 8', 
+    'Name 8',
     'name8@email.com',
     false,
     false
@@ -88,7 +88,7 @@ INSERT INTO ideas
     false
   ),
   (
-    10, 
+    10,
     'build a front end for my server',
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
     'Name 10',
